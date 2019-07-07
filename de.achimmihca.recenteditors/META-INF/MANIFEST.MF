@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Recent Editors
+Bundle-SymbolicName: de.achimmihca.recenteditors;singleton:=true
+Bundle-Version: 0.1
+Bundle-Vendor: https://github.com/achimmihca/RecentEditors
+Automatic-Module-Name: RecentEditors
+Require-Bundle: org.eclipse.core.resources,
+ org.eclipse.core.runtime,
+ org.eclipse.jface,
+ org.eclipse.ui,
+ org.eclipse.ui.workbench,
+ com.google.gson
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Import-Package: javax.annotation,
+ org.eclipse.ui,
+ org.eclipse.ui.part,
+ org.eclipse.ui.plugin
+Bundle-ClassPath: .
+Bundle-Activator: de.achimmihca.recenteditors.RecentEditorsActivator
+Bundle-ActivationPolicy: lazy
+Export-Package: de.achimmihca.recenteditors
+

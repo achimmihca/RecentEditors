@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="org.eclipse.ui.category.file"
+            defaultHandler="de.achimmihca.recenteditors.OpenRecentEditorsDialogHandler"
+            id="de.achimmihca.recenteditors.openRecentEditorsDialog"
+            name="Recent Editors...">
+      </command>
+   </extension>
+
+    <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="de.achimmihca.recenteditors.openRecentEditorsDialog"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+E">
+      </key>
+   </extension>
+   
+</plugin>

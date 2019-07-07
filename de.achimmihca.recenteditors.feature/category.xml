@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="de.achimmihca.recenteditors.feature">
+      <category name="de.achimmihca.recenteditors.category"/>
+   </feature>
+   <category-def name="de.achimmihca.recenteditors.category" label="Recent Editors"/>
+</site>

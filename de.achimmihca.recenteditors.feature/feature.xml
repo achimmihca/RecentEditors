@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="de.achimmihca.recenteditors.feature"
+      label="Recent Editors"
+      version="0.1.0.qualifier"
+      provider-name="https://github.com/achimmihca/RecentEditors">
+
+   <description url="http://www.example.com/description">
+      [description]
+   </description>
+
+   <copyright>
+      (c) All contributors
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [license]
+   </license>
+
+   <plugin
+         id="de.achimmihca.recenteditors"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
