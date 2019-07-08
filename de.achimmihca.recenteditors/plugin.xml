@@ -5,9 +5,15 @@
          point="org.eclipse.ui.commands">
       <command
             categoryId="org.eclipse.ui.category.file"
-            defaultHandler="de.achimmihca.recenteditors.OpenRecentEditorsDialogHandler"
+            defaultHandler="de.achimmihca.recenteditors.commands.OpenRecentEditorsDialogHandler"
             id="de.achimmihca.recenteditors.openRecentEditorsDialog"
             name="Recent Editors...">
+      </command>
+      <command
+            categoryId="org.eclipse.ui.category.file"
+            defaultHandler="de.achimmihca.recenteditors.commands.OpenRecentEditorHandler"
+            id="de.achimmihca.recenteditors.openRecentEditor"
+            name="Re-Open Last Closed Editor">
       </command>
    </extension>
 
@@ -19,6 +25,18 @@
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="CTRL+E">
       </key>
+      <key
+            commandId="de.achimmihca.recenteditors.openRecentEditor"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+SHIFT+W">
+      </key>
    </extension>
+    <extension
+          point="org.eclipse.ui.startup">
+       <startup
+             class="de.achimmihca.recenteditors.RecentEditorsPluginStartup">
+       </startup>
+    </extension>
    
 </plugin>

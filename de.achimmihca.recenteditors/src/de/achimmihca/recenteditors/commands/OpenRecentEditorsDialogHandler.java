@@ -1,12 +1,14 @@
 package de.achimmihca.recenteditors.commands;
 
-import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
 import de.achimmihca.recenteditors.logging.LogWrapper;
 
-public class OpenRecentEditorsDialogHandler extends AbstractHandler {
+/**
+ * Opens the recent editors dialog
+ */
+public class OpenRecentEditorsDialogHandler extends AbstractOpenRecentEditorHandler {
 
 	private static LogWrapper log = new LogWrapper( OpenRecentEditorsDialogHandler.class );
 
