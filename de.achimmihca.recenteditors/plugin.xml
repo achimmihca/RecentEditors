@@ -7,13 +7,13 @@
             categoryId="org.eclipse.ui.category.file"
             defaultHandler="de.achimmihca.recenteditors.commands.OpenRecentEditorsDialogHandler"
             id="de.achimmihca.recenteditors.openRecentEditorsDialog"
-            name="Recent Editors...">
+            name="Re-open Recently Closed Files...">
       </command>
       <command
             categoryId="org.eclipse.ui.category.file"
             defaultHandler="de.achimmihca.recenteditors.commands.OpenRecentEditorHandler"
             id="de.achimmihca.recenteditors.openRecentEditor"
-            name="Re-Open Last Closed Editor">
+            name="Re-open Last Closed Editor">
       </command>
    </extension>
 

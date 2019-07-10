@@ -3,8 +3,12 @@ package de.achimmihca.recenteditors.models;
 import java.util.Date;
 
 import org.apache.commons.io.FilenameUtils;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Path;
 
 import de.achimmihca.recenteditors.utils.JsonUtils;
+import de.achimmihca.recenteditors.utils.StringUtils;
 
 public class EditorModel {
 	private String filePath;
@@ -40,5 +44,14 @@ public class EditorModel {
 
 	public void setLastCloseTime(Date lastCloseTime) {
 		this.lastCloseTime = lastCloseTime;
+	}
+
+	public IFile toIFile() {
+		if( StringUtils.isNullOrEmpty( filePath ) ) {
+			return null;
+		}
+		var pathHandle = Path.fromPortableString( filePath );
+		var fileHandle = ResourcesPlugin.getWorkspace().getRoot().getFileForLocation( pathHandle );
+		return fileHandle;
 	}
 }

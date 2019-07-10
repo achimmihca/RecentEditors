@@ -33,7 +33,7 @@ public class RecentEditorsPartListener implements IPartListener {
 	public void partClosed(IWorkbenchPart part) {
 		if( part instanceof EditorPart ) {
 			var editorModel = createEditorModel( (EditorPart) part, new Date() );
-			log.info( "Updating lastCloseTime of the editor: " + editorModel.getFilePath() );
+			//			log.info( "Updating lastCloseTime of the editor: " + editorModel.getFilePath() );
 			settingsService.updateEditorModel( editorModel );
 		}
 	}
@@ -46,8 +46,8 @@ public class RecentEditorsPartListener implements IPartListener {
 	public void partOpened(IWorkbenchPart part) {
 		if( part instanceof EditorPart ) {
 			var editorModel = createEditorModel( (EditorPart) part, null );
-			log.info(
-			    "Removing now open editor from the list of recently closed editors: " + editorModel.getFilePath() );
+			//			log.info(
+			//			    "Removing now open editor from the list of recently closed editors: " + editorModel.getFilePath() );
 			settingsService.removeEditorModel( editorModel.getFilePath() );
 		}
 	}

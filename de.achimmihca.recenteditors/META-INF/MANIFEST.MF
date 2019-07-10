@@ -20,6 +20,12 @@ Import-Package: javax.annotation,
  org.eclipse.ui.plugin
 Bundle-ClassPath: .
 Bundle-Activator: de.achimmihca.recenteditors.RecentEditorsActivator
-Export-Package: de.achimmihca.recenteditors
+Export-Package: de.achimmihca.recenteditors,
+ de.achimmihca.recenteditors.commands,
+ de.achimmihca.recenteditors.logging,
+ de.achimmihca.recenteditors.models,
+ de.achimmihca.recenteditors.persistence,
+ de.achimmihca.recenteditors.services,
+ de.achimmihca.recenteditors.utils
 Bundle-ActivationPolicy: lazy
 
