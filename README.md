@@ -6,13 +6,18 @@ This plugin adds the following shortcuts. They can be changed in the Preferences
 Recently Closed Files Dialog: `CTRL+E`<br>
 Re-open Last Closed File: `CTRL+SHIFT+W`<br>
 
+Published on the [Eclipse Marketplace](https://marketplace.eclipse.org/content/recent-editors)<br>
 Update Site: https://raw.githubusercontent.com/achimmihca/RecentEditors/release/updatesite
+
+[![Drag to your running Eclipse* workspace. *Requires Eclipse Marketplace Client](https://marketplace.eclipse.org/sites/all/themes/solstice/public/images/marketplace/btn-install.png)](http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=4715457 "Drag to your running Eclipse* workspace. *Requires Eclipse Marketplace Client")
 
 See also the [Open Editors](https://github.com/dbickley/OpenEditors) plugin to navigate open files.
 
 # Screenshots
 
 <img src="web-assets/recent-editors-dialog.png" width="400">
+<br>
+<img src="web-assets/key-bindings-recent-editors.png" width="400">
 
 # Development Environment Setup
 The following explains how to set up your Eclipse IDE to continue the development of this plugin.
