@@ -33,7 +33,11 @@ public class RecentEditorsPartListener implements IPartListener {
 	public void partClosed(IWorkbenchPart part) {
 		if( part instanceof EditorPart ) {
 			var editorModel = createEditorModel( (EditorPart) part, new Date() );
+			if( editorModel == null ) {
+				return;
+			}
 			//			log.info( "Updating lastCloseTime of the editor: " + editorModel.getFilePath() );
+
 			settingsService.updateEditorModel( editorModel );
 		}
 	}
@@ -46,14 +50,27 @@ public class RecentEditorsPartListener implements IPartListener {
 	public void partOpened(IWorkbenchPart part) {
 		if( part instanceof EditorPart ) {
 			var editorModel = createEditorModel( (EditorPart) part, null );
+			if( editorModel == null ) {
+				return;
+			}
 			//			log.info(
 			//			    "Removing now open editor from the list of recently closed editors: " + editorModel.getFilePath() );
+
 			settingsService.removeEditorModel( editorModel.getFilePath() );
 		}
 	}
 
 	private EditorModel createEditorModel(EditorPart editorPart, Date lastCloseTime) {
-		var file = ResourceUtil.getFile( editorPart.getEditorInput() );
+		var editorInput = editorPart.getEditorInput();
+		if( editorInput == null ) {
+			return null;
+		}
+
+		var file = ResourceUtil.getFile( editorInput );
+		if( file == null || !file.exists() ) {
+			return null;
+		}
+
 		var filePath = file.getLocation().toPortableString();
 		var editorModel = new EditorModel( filePath, lastCloseTime );
 		return editorModel;
