@@ -2,7 +2,7 @@
 <feature
       id="de.achimmihca.recenteditors.feature"
       label="Recent Editors"
-      version="0.1.0.qualifier"
+      version="0.1.1.qualifier"
       provider-name="https://github.com/achimmihca/RecentEditors">
 
    <description url="http://www.example.com/description">
