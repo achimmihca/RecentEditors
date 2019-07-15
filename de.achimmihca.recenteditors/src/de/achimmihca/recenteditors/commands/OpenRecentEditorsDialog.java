@@ -1,8 +1,8 @@
 package de.achimmihca.recenteditors.commands;
 
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
@@ -20,7 +20,7 @@ public class OpenRecentEditorsDialog extends FilteredResourcesSelectionDialog {
 
 	private Map<IFile, EditorModel> fileToEditorModelMap = new HashMap<>();
 
-	public OpenRecentEditorsDialog(Shell shell, List<EditorModel> recentEditors) {
+	public OpenRecentEditorsDialog(Shell shell, Collection<EditorModel> recentEditors) {
 		super( shell, true, ResourcesPlugin.getWorkspace().getRoot(), IResource.FILE );
 		for( var editor : recentEditors ) {
 			var fileHandle = editor.toIFile();

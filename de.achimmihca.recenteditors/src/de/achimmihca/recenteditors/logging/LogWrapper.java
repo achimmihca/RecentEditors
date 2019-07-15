@@ -19,6 +19,11 @@ public class LogWrapper {
 		this.clazz = clazz;
 	}
 
+	public LogWrapper(Class<?> clazz, ILog log) {
+		this.log = log;
+		this.clazz = clazz;
+	}
+
 	public void info(Exception e) {
 		info( e, e.getMessage() );
 	}

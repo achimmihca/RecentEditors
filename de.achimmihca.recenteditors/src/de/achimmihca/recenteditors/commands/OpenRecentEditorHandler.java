@@ -26,8 +26,9 @@ public class OpenRecentEditorHandler extends AbstractHandler {
 		var editors = settingsService.getSettings().getRecentEditors();
 		if( !ListUtils.isNullOrEmpty( editors ) ) {
 			var comparator = new RecentEditorsComparator();
-			editors.sort( comparator );
-			var lastClosedEditor = editors.get( 0 );
+			var editorsList = ListUtils.copy( editors );
+			editorsList.sort( comparator );
+			var lastClosedEditor = editorsList.get( 0 );
 			//			log.info( "Re-opening editor:" + lastClosedEditor );
 			openEditor( event, lastClosedEditor );
 		} else {

@@ -2,18 +2,27 @@ package de.achimmihca.recenteditors.models;
 
 import java.io.File;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import de.achimmihca.recenteditors.utils.JsonUtils;
 import de.achimmihca.recenteditors.utils.ListUtils;
 
 public class SettingsModel {
-	private int maxRecentEditors = 20;
+	/**
+	 * Maximum number of editors that should be persisted.
+	 */
+	private int maxRecentEditors = 50;
+
+	/**
+	 * Determines whether the last persisted state of an editor should be restored when the editor is re-opened.
+	 * The editor state includes the last scroll position and selection.
+	 */
+	private boolean restoreEditorState = true;
+
 	private Set<EditorModel> recentEditors = new HashSet<>();
 
-	public List<EditorModel> getRecentEditors() {
-		return ListUtils.copy( recentEditors );
+	public Set<EditorModel> getRecentEditors() {
+		return recentEditors;
 	}
 
 	public void setRecentEditors(Set<EditorModel> recentEditors) {
@@ -64,5 +73,13 @@ public class SettingsModel {
 			}
 		}
 		removeEditor( oldestEditor );
+	}
+
+	public boolean isRestoreEditorState() {
+		return restoreEditorState;
+	}
+
+	public void setRestoreEditorState(boolean restoreEditorState) {
+		this.restoreEditorState = restoreEditorState;
 	}
 }

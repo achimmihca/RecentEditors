@@ -1,6 +1,7 @@
 package de.achimmihca.recenteditors.services;
 
 import java.util.Optional;
+import java.util.function.Consumer;
 
 import de.achimmihca.recenteditors.logging.LogWrapper;
 import de.achimmihca.recenteditors.models.EditorModel;
@@ -38,34 +39,23 @@ public class SettingsService {
 				return new SettingsModel();
 			} );
 			settings.removeNonExistingEditors();
-			log.info( "Loaded settings model " + settings );
+			//			log.info( "Loaded settings model " + settings );
 		}
 		return settings;
 	}
 
-	public void updateEditorModel(EditorModel newEditorModel) {
-		var oldRecentEditors = getSettings().getRecentEditors();
-		var existingEditor =
-		    ListUtils.findFirst( oldRecentEditors, (it) -> it.getFilePath().equals( newEditorModel.getFilePath() ) )
-		        .orElse( null );
-		if( existingEditor != null ) {
-			existingEditor.setLastCloseTime( newEditorModel.getLastCloseTime() );
-			save();
-		} else {
-			getSettings().addRecentEditor( newEditorModel );
-			save();
-		}
-		//		log.info( "Saved changed settings model with updated editor: " + getSettings() );
+	public void editSettings(Consumer<SettingsModel> consumer) {
+		consumer.accept( getSettings() );
 	}
 
-	public void removeEditorModel(String filePath) {
-		var editorOptional =
-		    ListUtils.findFirst( getSettings().getRecentEditors(), (it) -> it.getFilePath().equals( filePath ) );
-		editorOptional.ifPresent( (it) -> getSettings().removeEditor( it ) );
-		//		log.info( "Saved settings model without the editor '" + filePath + "': " + getSettings() );
+	public Optional<EditorModel> findEditorModel(String filePath) {
+		var allRecentEditors = getSettings().getRecentEditors();
+		var matchingRecentEditor = ListUtils.findFirst( allRecentEditors, (it) -> it.getFilePath().equals( filePath ) );
+		return matchingRecentEditor;
 	}
 
-	private void save() {
+	public void save() {
 		persistenceService.save( SETTINGS_FILENAME, getSettings() );
+		//		log.info( "Saved settings model " + getSettings() );
 	}
 }

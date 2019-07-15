@@ -5,6 +5,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
+import de.achimmihca.recenteditors.logging.LogWrapper;
 import de.achimmihca.recenteditors.services.SettingsService;
 
 /**
@@ -19,11 +20,14 @@ public class RecentEditorsActivator extends AbstractUIPlugin {
 	private SettingsService settingsService;
 	private RecentEditorsPartListener partListener;
 
+	private LogWrapper log;
+
 	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start( context );
 		plugin = this;
 
+		log = new LogWrapper( RecentEditorsActivator.class, getLog() );
 		settingsService = new SettingsService();
 		partListener = new RecentEditorsPartListener( settingsService );
 	}
@@ -39,7 +43,14 @@ public class RecentEditorsActivator extends AbstractUIPlugin {
 				workbenchWindow.getPartService().removePartListener( partListener );
 			}
 		} catch(Exception e) {
-			e.printStackTrace();
+			log.error( e );
+		}
+
+		// Save settings
+		try {
+			settingsService.save();
+		} catch( Exception e ) {
+			log.error( e );
 		}
 	}
 
