@@ -1,6 +1,8 @@
-
 RecentEditors is an Eclipse plugin that adds a new dialog to see and re-open recently closed files.
-Additionally, it adds a command to re-open the last closed editor via keyboard shortcut.
+It also adds a command to re-open the last closed editor via keyboard shortcut.
+
+Furthermore, the current scoll position and caret position of editors is persisted and can be restored when an editor is re-opened.
+This enables to continue editing at the last viewed position.
 
 This plugin adds the following shortcuts. They can be changed in the Preferences:<br>
 Recently Closed Files Dialog: `CTRL+E`<br>
