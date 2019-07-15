@@ -41,7 +41,12 @@ public class EditorModel {
 	}
 
 	public EditorModel(String filePath) {
+		this( filePath, null );
+	}
+
+	public EditorModel(String filePath, Date lastCloseTime) {
 		this.filePath = filePath;
+		this.lastCloseTime = lastCloseTime;
 	}
 
 	@Override

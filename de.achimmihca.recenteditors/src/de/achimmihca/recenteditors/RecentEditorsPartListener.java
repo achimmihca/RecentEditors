@@ -43,7 +43,7 @@ public class RecentEditorsPartListener implements IPartListener {
 			}
 			
 			var editorModel = settingsService.findEditorModel( filePath ).orElseGet( () -> {
-				var newEditorModel = new EditorModel( filePath );
+				var newEditorModel = new EditorModel( filePath, new Date() );
 				settingsService.getSettings().addRecentEditor( newEditorModel );
 				return newEditorModel;
 			} );

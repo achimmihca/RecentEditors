@@ -22,7 +22,7 @@ public class RecentEditorsComparator implements Comparator<EditorModel> {
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public int compare(final Comparable one, final Comparable two) {
+	public static int compare(final Comparable one, final Comparable two) {
 		if( one == null ^ two == null ) {
 			return ( one == null ) ? -1 : 1;
 		}

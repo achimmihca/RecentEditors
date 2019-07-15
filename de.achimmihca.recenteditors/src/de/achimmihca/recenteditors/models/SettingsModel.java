@@ -1,6 +1,7 @@
 package de.achimmihca.recenteditors.models;
 
 import java.io.File;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,11 +32,11 @@ public class SettingsModel {
 
 	public void addRecentEditor(EditorModel newEditorModel) {
 		if( !recentEditors.contains( newEditorModel ) ) {
-			recentEditors.add( newEditorModel );
 			// Remove oldest editor if limit reached.
-			if( recentEditors.size() > maxRecentEditors ) {
+			if( recentEditors.size() >= maxRecentEditors ) {
 				removeOldestEditor();
 			}
+			recentEditors.add( newEditorModel );
 		}
 	}
 
@@ -68,11 +69,23 @@ public class SettingsModel {
 	private void removeOldestEditor() {
 		EditorModel oldestEditor = null;
 		for( var editor : recentEditors ) {
-			if( oldestEditor == null || editor.getLastCloseTime().before( oldestEditor.getLastCloseTime() ) ) {
+			var lastCloseTime = editor.getLastCloseTime();
+			if( oldestEditor == null || lastCloseTime == null
+			    || isBefore( lastCloseTime, oldestEditor.getLastCloseTime() ) ) {
 				oldestEditor = editor;
 			}
 		}
 		removeEditor( oldestEditor );
+	}
+
+	private boolean isBefore(Date date1, Date date2) {
+		// null values are considered to be older than non-null values.
+		if( date1 == null ) {
+			return ( date2 != null );
+		} else if( date2 == null ) {
+			return false;
+		}
+		return date1.before( date2 );
 	}
 
 	public boolean isRestoreEditorState() {
