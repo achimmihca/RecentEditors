@@ -38,5 +38,13 @@
              class="de.achimmihca.recenteditors.RecentEditorsPluginStartup">
        </startup>
     </extension>
+    <extension
+          point="org.eclipse.ui.preferencePages">
+       <page
+             class="de.achimmihca.recenteditors.RecentEditorsPreferencePage"
+             id="de.achimmihca.recenteditors.preferencePage"
+             name="Recent Editors">
+       </page>
+    </extension>
    
 </plugin>
