@@ -32,11 +32,18 @@ public class SettingsModel {
 
 	public void addRecentEditor(EditorModel newEditorModel) {
 		if( !recentEditors.contains( newEditorModel ) ) {
-			// Remove oldest editor if limit reached.
-			if( recentEditors.size() >= maxRecentEditors ) {
-				removeOldestEditor();
+			if( maxRecentEditors > 0 ) {
+				recentEditors.add( newEditorModel );
+				// Remove oldest editors if limit reached.
+				int editorCountOverMax = recentEditors.size() - maxRecentEditors;
+				if( editorCountOverMax > 0 ) {
+					for( var i = 1; i <= editorCountOverMax; i++ ) {
+						removeOldestEditor();
+					}
+				}
+			} else if( !recentEditors.isEmpty() ) {
+				recentEditors.clear();
 			}
-			recentEditors.add( newEditorModel );
 		}
 	}
 
