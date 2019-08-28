@@ -72,7 +72,9 @@ public class OpenRecentEditorsDialogHandler extends AbstractHandler {
 
 		var shell = window.getShell();
 		var settingsService = RecentEditorsActivator.getDefault().getSettingsService();
-		var recentEditors = settingsService.getSettings().getRecentEditors();
+		var settings = settingsService.getSettings();
+		settings.removeNonExistingEditors();
+		var recentEditors = settings.getRecentEditors();
 
 		final var dialog = new OpenRecentEditorsDialog( shell, recentEditors );
 		final int resultCode = dialog.open();
